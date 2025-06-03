@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOx 排放監控系統</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+    }
+    header {
+      height: 50px;
+      background-color: #0a3d62;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin-left: 250px;
+      transition: margin-left 0.3s ease;
+      position: relative;
+    }
+
+    .header-title-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .header-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .sidebar {
+      position: fixed;
+      height: 100vh;
+      width: 250px;
+      background: #1e3799;
+      transition: width 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar.close {
+      width: 80px;
+    }
+    .sidebar .logo-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 1rem; /* 上下左右都加 */
+      color: white;
+      text-align: center;
+    }
+    .sidebar .logo-img {
+      height: 50px;
+      width: auto;
+      margin: 0.2rem;
+    }
+    .sidebar .logo-text {
+      font-size: 1rem;
+      margin: 0.5rem;
+      line-height: 1rem;
+    }
+    .sidebar .logo-text-sub {
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+    .sidebar.close .logo-text {
+      display: none;
+    }
+    .sidebar.close .logo-text-sub {
+      display: none;
+    }
+    .header-title-wrapper .toggle-btn {
+      font-size: 1.55rem;
+      color: white;
+      top: 1rem;
+      cursor: pointer;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 1rem 0;
+    }
+    .sidebar ul li {
+      padding: 0.8rem 1rem;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: 0.3s;
+      border-radius: 8px;
+      margin: 0.3rem 0.5rem;
+    }
+    .sidebar ul li:hover,
+    .sidebar ul li.active {
+      background-color: #273c75;
+    }
+    .sidebar ul li i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .sidebar ul li span {
+      white-space: nowrap;
+    }
+    .sidebar.close ul li {
+      justify-content: center;
+    }
+    .sidebar.close ul li span {
+      display: none;
+    }
+    .login-section {
+      padding: 1rem;
+      color: white;
+      border-top: 1px solid #40739e;
+      text-align: center;
+    }
+    .login-section .user-label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .login-section button {
+      padding: 0.4rem 0.8rem;
+      background-color: #40739e;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .sidebar.close .login-section .user-label {
+      display: none;
+    }
+    .sidebar.close .login-section button span {
+      display: none;
+    }
+    .main {
+      margin-left: 250px;
+      padding: 2rem;
+      transition: margin-left 0.3s ease;
+    }
+    .sidebar.close ~ .main {
+      margin-left: 80px;
+    }
+    .sidebar.close ~ header {
+      margin-left: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <div class="logo-details">
+        <img src="logo.svg" alt="logo" class="logo-img">
+
+        <span class="logo-text">工研院材化所</span>
+        <span class="logo-text-sub">K900 智慧運維研究室</span>
+      </div>
+      <ul>
+        <li class="active" data-tab="dashboard"><i class='bx bx-grid-alt'></i><span>Dashboard</span></li>
+        <li data-tab="history"><i class='bx bx-line-chart'></i><span>歷史查詢</span></li>
+        <li data-tab="report"><i class='bx bx-file'></i><span>日報表</span></li>
+        <li data-tab="model"><i class='bx bx-brain'></i><span>AI 模型</span></li>
+        <li data-tab="admin"><i class='bx bx-cog'></i><span>系統管理</span></li>
+      </ul>
+    </div>
+    <div class="login-section">
+      <span class="user-label">使用者：操作員A</span>
+      <button><i class='bx bx-log-out'></i><span>登出</span></button>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-title-wrapper">
+      <i class='bx bx-menu toggle-btn'></i>
+      <div class="header-title">
+        <h1>五鍋 NOx 排放監控系統</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="main" id="main-content"></div>
+
+  <script>
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const mainContent = document.getElementById('main-content');
+    const items = document.querySelectorAll('.sidebar ul li');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('close');
+    });
+
+    const tabUrls = {
+      dashboard: 'dashboard.html',
+      history: 'history.html',
+      report: 'report.html',
+      model: 'model.html',
+      admin: 'admin.html'
+    };
+
+    function loadTab(tab) {
+      items.forEach(i => i.classList.remove('active'));
+      const activeItem = document.querySelector(`[data-tab="${tab}"]`);
+      activeItem && activeItem.classList.add('active');
+      fetch(tabUrls[tab])
+        .then(res => res.text())
+        .then(html => {
+          mainContent.innerHTML = html;
+          // 重新執行頁面中的 script 標籤
+          mainContent.querySelectorAll('script').forEach(oldScript => {
+            const newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+            document.body.removeChild(newScript);
+          });
+
+          // 如果是歷史頁面，初始化圖表功能
+          if (tab === 'history' && typeof initHistoryPage === 'function') {
+            // 等待 DOM 更新完成
+            setTimeout(initHistoryPage, 100);
+          }
+        });
+    }
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const tab = item.dataset.tab;
+        loadTab(tab);
+      });
+    });
+
+    loadTab('dashboard');
+  </script>
+</body>
+</html>

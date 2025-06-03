@@ -1,0 +1,282 @@
+<style>
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.card {
+  background: white;
+  padding: 1rem;
+  flex: 1 1 250px;
+  min-width: 250px;
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .card { flex: 1 1 45%; }
+}
+@media (max-width: 600px) {
+  .card { flex: 1 1 100%; }
+  .card-container { gap: 0.7rem; padding: 0; }
+}
+.section {
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+.param-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#chart-area {
+  margin-top: 20px;
+}
+#chart-area canvas {
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<p style="width: 100%; text-align: right; margin: -0.5rem 0 1rem; font-size: 0.9rem; color: #888;">
+  <strong>※ 歷史資料查詢結果將根據時間區間自動更新</strong>
+</p>
+
+<div class="section">
+  <h2>📅 選擇查詢區間</h2>
+  <label for="start">起始時間：</label>
+  <input type="datetime-local" id="start">
+  <label for="end">結束時間：</label>
+  <input type="datetime-local" id="end">
+  <button id="search">查詢</button>
+</div>
+
+<div class="section">
+  <h2>🔧 製程參數曲線</h2>
+  <div id="param-container">
+    <div class="param-row">
+      <select class="param-select">
+        <option value="scr_temp">SCR 反應溫度</option>
+        <option value="o2_out">O₂ 含量</option>
+        <option value="flue_gas_flow">煙氣流量</option>
+        <option value="flue_gas_temp">煙氣溫度</option>
+        <option value="nh3_injection">注氨量</option>
+      </select>
+      <button class="add-param">＋</button>
+    </div>
+  </div>
+  <div style="margin: 1rem 0;">
+    <button id="renderChart" class="chart-btn">疊加繪圖</button>
+    <button id="renderIndividual" class="chart-btn">分開顯示</button>
+  </div>
+  <div id="chart-area">
+    <canvas id="paramTrendChart"></canvas>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📤 匯出功能</h2>
+  <button id="exportCsv">匯出 CSV</button>
+  <button id="exportPng">匯出圖表為 PNG</button>
+</div>
+
+<script>
+if (!window.mockData) {
+  window.mockData = {
+    scr_temp: { label: 'SCR 反應溫度', unit: '°C', values: [310, 312, 315, 313, 314, 316], color: '#e74c3c' },
+    o2_out: { label: 'O₂ 含量', unit: '%', values: [5.2, 5.1, 5.3, 5.2, 5.0, 5.1], color: '#3498db' },
+    flue_gas_flow: { label: '煙氣流量', unit: 'm³/h', values: [1200, 1180, 1210, 1205, 1195, 1202], color: '#2ecc71' },
+    flue_gas_temp: { label: '煙氣溫度', unit: '°C', values: [180, 182, 183, 179, 177, 178], color: '#f39c12' },
+    nh3_injection: { label: '注氨量', unit: 'L/h', values: [10.5, 11.0, 10.8, 10.7, 10.6, 10.9], color: '#9b59b6' }
+  };
+}
+
+if (!window.chartInstances) window.chartInstances = [];
+
+function getParamLabel(key) {
+  if (window.mockData[key]) {
+    return `${window.mockData[key].label} (${window.mockData[key].unit})`;
+  }
+  return key;
+}
+
+function formatDateTimeInput(date) {
+  const pad = num => num.toString().padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function generateTimeLabels() {
+  try {
+    const start = new Date(document.getElementById('start').value);
+    const end = new Date(document.getElementById('end').value);
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      return Array(6).fill().map((_, i) => `${i * 4}:00`);
+    }
+    const diffInMinutes = Math.floor((end - start) / (1000 * 60));
+    const labels = [];
+    const step = Math.max(1, Math.ceil(diffInMinutes / 10));
+    for (let i = 0; i <= diffInMinutes; i += step) {
+      const date = new Date(start);
+      date.setMinutes(date.getMinutes() + i);
+      labels.push(date.toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit', hour12: false }));
+    }
+    return labels.length > 0 ? labels : ['00:00'];
+  } catch (e) {
+    console.error('Error generating time labels:', e);
+    return Array(6).fill().map((_, i) => `${i * 4}:00`);
+  }
+}
+
+function clearCharts() {
+  window.chartInstances.forEach(chart => {
+    try { chart.destroy(); } catch (e) {}
+  });
+  window.chartInstances = [];
+  document.getElementById('chart-area').innerHTML = '<canvas id="paramTrendChart"></canvas>';
+}
+
+function renderChartStacked() {
+  clearCharts();
+  const canvas = document.getElementById('paramTrendChart');
+  const ctx = canvas.getContext('2d');
+  const selectedParams = Array.from(document.querySelectorAll('.param-select')).map(sel => sel.value);
+  if (!window.mockData) {
+    alert('mockData 未定義！');
+    return;
+  }
+  const timeLabels = generateTimeLabels();
+  const datasets = selectedParams.map(param => {
+    const paramData = window.mockData[param];
+    if (!paramData) return null;
+    return {
+      label: paramData.label,
+      data: paramData.values,
+      borderColor: paramData.color,
+      backgroundColor: paramData.color + '22',
+      borderWidth: 2,
+      fill: false,
+      tension: 0.3,
+      pointRadius: 3,
+      pointHoverRadius: 5
+    };
+  }).filter(Boolean);
+  if (datasets.length === 0) {
+    document.getElementById('chart-area').innerHTML = '<p class="text-center text-muted mt-4">請選擇要顯示的參數</p>';
+    return;
+  }
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: timeLabels, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: { title: { display: true, text: '製程參數疊加走勢圖', font: { size: 16 } } },
+      interaction: { mode: 'index', intersect: false },
+      legend: { position: 'bottom' },
+      scales: { y: { beginAtZero: false, title: { display: true, text: '數值' } }, x: { title: { display: true, text: '時間' } } },
+      tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} ${window.mockData[selectedParams[ctx.datasetIndex]]?.unit || ''}` } }
+    }
+  });
+  window.chartInstances.push(chart);
+}
+
+function renderChartIndividual() {
+  clearCharts();
+  const chartArea = document.getElementById('chart-area');
+  const selectedParams = Array.from(document.querySelectorAll('.param-select')).map(sel => sel.value);
+  const timeLabels = generateTimeLabels();
+  selectedParams.forEach(param => {
+    const paramData = window.mockData[param];
+    if (!paramData) return;
+    const chartContainer = document.createElement('div');
+    chartContainer.style.marginBottom = '30px';
+    chartContainer.style.position = 'relative';
+    chartContainer.style.height = '300px';
+    const title = document.createElement('h3');
+    title.textContent = getParamLabel(param);
+    title.style.margin = '10px 0';
+    title.style.color = '#333';
+    chartContainer.appendChild(title);
+    const canvas = document.createElement('canvas');
+    chartContainer.appendChild(canvas);
+    chartArea.appendChild(chartContainer);
+    const ctx = canvas.getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: timeLabels,
+        datasets: [{
+          label: paramData.label,
+          data: paramData.values,
+          borderColor: paramData.color,
+          backgroundColor: paramData.color + '22',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, title: { display: false } },
+        scales: { y: { beginAtZero: false, title: { display: true, text: paramData.unit } }, x: { title: { display: true, text: '時間' } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} ${paramData.unit}` } }
+      }
+    });
+    window.chartInstances.push(chart);
+  });
+}
+
+window.initHistoryPage = function() {
+  // 預設日期
+  const now = new Date();
+  const start = new Date(now);
+  start.setDate(start.getDate() - 1);
+  document.getElementById('start').value = formatDateTimeInput(start);
+  document.getElementById('end').value = formatDateTimeInput(now);
+
+  // 全域變數
+  window.chartArea = document.getElementById('chart-area');
+  window.container = document.getElementById('param-container');
+  if (!window.chartInstances) window.chartInstances = [];
+
+  document.getElementById('renderChart').onclick = renderChartStacked;
+  document.getElementById('renderIndividual').onclick = renderChartIndividual;
+
+  window.container.addEventListener('click', function(e) {
+    if (e.target.classList.contains('add-param')) {
+      const newRow = document.createElement('div');
+      newRow.className = 'param-row';
+      newRow.innerHTML = `
+        <select class="param-select">
+          <option value="scr_temp">SCR 反應溫度</option>
+          <option value="o2_out">O₂ 含量</option>
+          <option value="flue_gas_flow">煙氣流量</option>
+          <option value="flue_gas_temp">煙氣溫度</option>
+          <option value="nh3_injection">注氨量</option>
+        </select>
+        <button class="remove-param">－</button>
+      `;
+      window.container.appendChild(newRow);
+    }
+    if (e.target.classList.contains('remove-param')) {
+      e.target.parentElement.remove();
+    }
+  });
+
+  const searchBtn = document.getElementById('search');
+  if (searchBtn) {
+    searchBtn.onclick = function() {
+      renderChartStacked();
+    };
+  }
+};
+</script>

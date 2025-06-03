@@ -1,0 +1,224 @@
+<style>
+  .section {
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+  }
+  .param-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  #chart-area canvas {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  button {
+    margin-right: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  th, td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  th {
+    background-color: #f0f0f0;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<p style="width: 100%; text-align: right; margin: -0.5rem 0 1rem; font-size: 0.9rem; color: #888;">
+  <strong>※ 查詢僅限單日資料，預設為今日。</strong>
+</p>
+
+<div class="section">
+  <h2>📅 查詢日期</h2>
+  <label for="query-date">選擇日期：</label>
+  <input type="date" id="query-date">
+  <button id="search">查詢</button>
+</div>
+
+<div class="section">
+  <h2>📈 統計折線圖（多參數比較）</h2>
+  <div class="param-row">
+    <label><input type="checkbox" class="line-toggle" value="nox_out" checked> NOx 出口濃度（ppm）</label>
+    <label><input type="checkbox" class="line-toggle" value="nox_in" checked> NOx 入口濃度（ppm）</label>
+    <label><input type="checkbox" class="line-toggle" value="nox_pred" checked> 預測 NOx 濃度（ppm）</label>
+    <label><input type="checkbox" class="line-toggle" value="nh3"> 注氨流量（Nm³/h）</label>
+    <label><input type="checkbox" class="line-toggle" value="temp"> 爐膛溫度（°C）</label>
+    <label><input type="checkbox" class="line-toggle" value="flow"> 煙氣流速（m/s）</label>
+  </div>
+  <div class="param-row">
+    <label for="granularity">資料粒度：</label>
+    <select id="granularity">
+      <option value="minute">每分鐘</option>
+      <option value="hour">每小時</option>
+    </select>
+  </div>
+  <canvas id="trendChart" height="120"></canvas>
+</div>
+
+<div class="section">
+  <h2>🔔 超標警告區塊</h2>
+  <h3>📋 超標事件清單</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>警告編號</th>
+        <th>開始時間</th>
+        <th>結束時間</th>
+        <th>持續時間</th>
+        <th>類型</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>A001</td><td>08:15</td><td>08:30</td><td>15 分鐘</td><td>瞬間偏高</td></tr>
+      <tr><td>A002</td><td>10:00</td><td>11:00</td><td>60 分鐘</td><td>連續超標</td></tr>
+      <tr><td>A003</td><td>13:45</td><td>14:00</td><td>15 分鐘</td><td>瞬間偏高</td></tr>
+    </tbody>
+  </table>
+  <h3>📊 統計摘要</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>指標項目</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>總超標次數</td><td>3 次</td></tr>
+      <tr><td>連續超標次數</td><td>1 次</td></tr>
+      <tr><td>當日總超標時數</td><td>1 小時 30 分</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>✅ 模型預測準確度區塊</h2>
+  <p>模型版本：V1.0</p>
+  <h3>📊 預測誤差表格</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>時間</th>
+        <th>實測值 (ppm)</th>
+        <th>預測值 (ppm)</th>
+        <th>偏差 (Δ)</th>
+        <th>σ</th>
+        <th>判定狀態</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>00:00</td><td>15.2</td><td>15.3</td><td>+0.1</td><td>0.5</td><td>✅ in ±1σ</td></tr>
+      <tr><td>01:00</td><td>14.9</td><td>15.8</td><td>+0.9</td><td>0.4</td><td>❌ out ±2σ</td></tr>
+      <tr><td>02:00</td><td>15.0</td><td>15.5</td><td>+0.5</td><td>0.6</td><td>⚠️ in ±2σ</td></tr>
+      <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+    </tbody>
+  </table>
+  <h3>📈 準確率摘要</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>指標項目</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>±1σ 命中率</td><td>87.5%</td></tr>
+      <tr><td>±2σ 命中率</td><td>97.8%</td></tr>
+      <tr><td>最大誤差時段</td><td>01:00（偏差 +0.9 ppm）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>📤 匯出功能</h2>
+  <button id="exportCsv">匯出 CSV</button>
+  <button id="exportPng">匯出圖表為 PNG</button>
+</div>
+
+<script>
+  // 預設查詢日期為今日
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('query-date').value = today;
+  });
+    const ctx = document.getElementById('trendChart').getContext('2d');
+  const timeLabels = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00'];
+  const mockData = {
+    nox_out: [12, 16, 20, 14, 13, 18, 21],
+    nox_in: [24, 28, 30, 26, 25, 29, 32],
+    nox_pred: [13, 17, 19, 15, 14, 18, 20],
+    nh3: [5, 7, 6, 4, 5, 6, 5],
+    temp: [180, 185, 182, 178, 180, 183, 181],
+    flow: [12.1, 12.3, 12.2, 12.0, 12.1, 12.4, 12.3]
+  };
+  const overThresholdIndices = [2, 6];
+
+  const colorMap = {
+    nox_out: '#e74c3c',
+    nox_in: '#3498db',
+    nox_pred: '#f39c12',
+    nh3: '#27ae60',
+    temp: '#8e44ad',
+    flow: '#2c3e50'
+  };
+
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: timeLabels,
+      datasets: Object.entries(mockData).map(([key, data]) => ({
+        label: key,
+        data: data,
+        hidden: !['nox_out','nox_in','nox_pred'].includes(key),
+        borderColor: colorMap[key],
+        backgroundColor: colorMap[key] + '22',
+        pointBackgroundColor: data.map((v, i) => key === 'nox_out' && overThresholdIndices.includes(i) ? '#e74c3c' : colorMap[key]),
+        pointRadius: data.map((v, i) => key === 'nox_out' && overThresholdIndices.includes(i) ? 6 : 3),
+        tension: 0.3
+      }))
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: true },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}：${ctx.formattedValue}`
+          }
+        },
+        title: { display: true, text: '多參數走勢圖（含超標標記）' }
+      },
+      scales: {
+        y: {
+          title: { display: true, text: '數值' },
+          grid: { borderDash: [4,4], color: '#ddd' }
+        },
+        x: {
+          title: { display: true, text: '時間' }
+        }
+      }
+    }
+  });
+
+  document.querySelectorAll('.line-toggle').forEach(input => {
+    input.addEventListener('change', e => {
+      const dataset = chart.data.datasets.find(d => d.label === input.value);
+      if (dataset) {
+        dataset.hidden = !input.checked;
+        chart.update();
+      }
+    });
+  });
+</script>

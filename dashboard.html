@@ -1,0 +1,215 @@
+<style>
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.card {
+  background: white;
+  padding: 1rem;
+  flex: 1 1 250px;
+  min-width: 250px;
+  max-width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .card { flex: 1 1 45%; }
+}
+@media (max-width: 600px) {
+  .card { flex: 1 1 100%; }
+  .card-container { gap: 0.7rem; padding: 0; }
+}
+.section {
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+  .img-preview {
+    margin-top: 1rem;
+    display: block;
+  }
+  .img-preview img {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<p style="width: 100%; text-align: right; margin: -0.5rem 0 1rem; font-size: 0.9rem; color: #888;">
+  <strong>※ 所有即時數值皆為每分鐘自動更新</strong>
+</p>
+<div class="card-container">
+  <div class="card gauge-card">
+    <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #2c3e50;">目前NH₃ 即時值</h3>
+    <div class="gauge-container">
+      <svg width="100%" height="120" viewBox="0 0 200 120" class="gauge">
+        <defs>
+          <linearGradient id="gaugeGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="#ecf0f1" stroke-width="20" />
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="url(#gaugeGradient1)" stroke-width="20" 
+              stroke-linecap="round" stroke-dasharray="188.5, 188.5" stroke-dashoffset="47.1" class="gauge-fill" />
+        <text x="100" y="80" text-anchor="middle" font-size="24" font-weight="600" fill="#2c3e50">15.6</text>
+        <text x="100" y="105" text-anchor="middle" font-size="16" fill="#7f8c8d">ppm</text>
+      </svg>
+    </div>
+  </div>
+  <div class="card gauge-card">
+    <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #2c3e50;">目前NH₃ 建議值</h3>
+    <div class="gauge-container">
+      <svg width="100%" height="120" viewBox="0 0 200 120" class="gauge">
+        <defs>
+          <linearGradient id="gaugeGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="#ecf0f1" stroke-width="20" />
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="url(#gaugeGradient2)" stroke-width="20" 
+              stroke-linecap="round" stroke-dasharray="188.5, 188.5" stroke-dashoffset="56.5" class="gauge-fill" />
+        <text x="100" y="80" text-anchor="middle" font-size="24" font-weight="600" fill="#2c3e50">18.7</text>
+        <text x="100" y="105" text-anchor="middle" font-size="16" fill="#7f8c8d">ppm</text>
+      </svg>
+    </div>
+  </div>
+  <div class="card gauge-card">
+    <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #2c3e50;">NOx 濃度（入口）</h3>
+    <div class="gauge-container">
+      <svg width="100%" height="120" viewBox="0 0 200 120" class="gauge">
+        <defs>
+          <linearGradient id="gaugeGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="#ecf0f1" stroke-width="20" />
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="url(#gaugeGradient3)" stroke-width="20" 
+              stroke-linecap="round" stroke-dasharray="188.5, 188.5" stroke-dashoffset="37.7" class="gauge-fill" />
+        <text x="100" y="80" text-anchor="middle" font-size="24" font-weight="600" fill="#2c3e50">12.3</text>
+        <text x="100" y="105" text-anchor="middle" font-size="16" fill="#7f8c8d">ppm</text>
+      </svg>
+    </div>
+  </div>
+  <div class="card gauge-card">
+    <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #2c3e50;">SCR 反應溫度</h3>
+    <div class="gauge-container">
+      <svg width="100%" height="120" viewBox="0 0 200 120" class="gauge">
+        <defs>
+          <linearGradient id="gaugeGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#8e44ad;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="#ecf0f1" stroke-width="20" />
+        <path d="M40,100 A60,60 0 0,1 160,100" fill="none" stroke="url(#gaugeGradient4)" stroke-width="20" 
+              stroke-linecap="round" stroke-dasharray="188.5, 188.5" stroke-dashoffset="62.8" class="gauge-fill" />
+        <text x="100" y="80" text-anchor="middle" font-size="24" font-weight="600" fill="#2c3e50">24.5</text>
+        <text x="100" y="105" text-anchor="middle" font-size="16" fill="#7f8c8d">°C</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3 style="font-size: 24px; margin-bottom: 20px; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;">趨勢圖</h3>
+  <div class="img-preview">
+    <div style="margin-bottom: 30px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+      <strong style="display: block; font-size: 20px; color: #2c3e50; margin-bottom: 15px; font-weight: 600;">NOx 1 HR + AI 預測 NOx 趨勢圖</strong>
+      <img src="nox_1hr_predict.png" alt="NOx Prediction Curve" style="max-width: 100%; height: auto;">
+    </div>
+    <div style="margin-bottom: 30px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+      <strong style="display: block; font-size: 20px; color: #2c3e50; margin-bottom: 15px; font-weight: 600;">注氨流量 1 HR 趨勢圖</strong>
+      <img src="nh3_injection_rate_1hr_predict.png" alt="NH3 Injection Rate Prediction Curve" style="max-width: 100%; height: auto;">
+    </div>
+    <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+      <strong style="display: block; font-size: 20px; color: #2c3e50; margin-bottom: 15px; font-weight: 600;">近三年氨水總用量</strong>
+      <img src="yearly_comparison_nox.png" alt="Yearly NH3 Usage Comparison" style="max-width: 100%; height: auto;">
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h4>模型狀態：v1.2 | 最近更新：2025/05/19 10:00</h4>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  const timeLabels = ['09:00', '09:15', '09:30', '09:45', '10:00', '10:15'];
+  const realtimeData = [15.3, 15.4, 15.6, 15.5, 15.7, 15.6];
+  const forecastData = [15.4, 15.5, 15.6, 15.7, 15.8, 15.9];
+
+  const baseOptions = (title) => ({
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top' },
+      title: { display: true, text: title },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.dataset.label}：${ctx.formattedValue} ppm`
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: '時間' },
+        grid: { display: false }
+      },
+      y: {
+        title: { display: true, text: '濃度 (ppm)' },
+        beginAtZero: false,
+        grid: {
+          borderDash: [4, 4],
+          color: '#ddd'
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('noxRealtimeChart').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: timeLabels,
+      datasets: [{
+        label: 'NOx 實測值',
+        data: realtimeData,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0
+      }]
+    },
+    options: baseOptions('NOx 濃度實測趨勢')
+  });
+
+  new Chart(document.getElementById('noxForecastChart').getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: timeLabels,
+      datasets: [{
+        label: 'NOx 預測值',
+        data: forecastData,
+        borderColor: '#e74c3c',
+        backgroundColor: 'rgba(231, 76, 60, 0.1)',
+        fill: true,
+        tension: 0.3,
+        borderDash: [5, 5],
+        pointRadius: 0
+      }]
+    },
+    options: baseOptions('NOx AI 預測趨勢')
+  });
+});
+</script>
