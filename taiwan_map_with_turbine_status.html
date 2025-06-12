@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6eb6cd7cfda04a506fff65342f88f29e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6eb6cd7cfda04a506fff65342f88f29e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6eb6cd7cfda04a506fff65342f88f29e = L.map(
+                "map_6eb6cd7cfda04a506fff65342f88f29e",
+                {
+                    center: [23.5, 121.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_69a3207c970dd90476d6f2425e2012da = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_69a3207c970dd90476d6f2425e2012da.addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var marker_077d51d7b2b8b179a93511e4921bb685 = L.marker(
+                [25.063178, 121.099614],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_0b816915f36f469f5453099d84a83c1a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_077d51d7b2b8b179a93511e4921bb685.setIcon(icon_0b816915f36f469f5453099d84a83c1a);
+        
+    
+        var popup_9a60970cf1a05a76812c5fc17a5524fd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6940a5ba975dd9698149801a657be7e0 = $(`<div id="html_6940a5ba975dd9698149801a657be7e0" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_9a60970cf1a05a76812c5fc17a5524fd.setContent(html_6940a5ba975dd9698149801a657be7e0);
+            
+        
+
+        marker_077d51d7b2b8b179a93511e4921bb685.bindPopup(popup_9a60970cf1a05a76812c5fc17a5524fd)
+        ;
+
+        
+    
+    
+            var marker_ca0822be57d39ee816ae845c08e5f340 = L.marker(
+                [25.059722, 121.096915],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_67766ada90c6f88d39b37512d6e270c1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_ca0822be57d39ee816ae845c08e5f340.setIcon(icon_67766ada90c6f88d39b37512d6e270c1);
+        
+    
+        var popup_ded14a4163427a9531079f2cd1fec6c7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ce01a1777da8f4e18fdbcf847c5163c3 = $(`<div id="html_ce01a1777da8f4e18fdbcf847c5163c3" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 33<br>Count: 0</div>`)[0];
+                popup_ded14a4163427a9531079f2cd1fec6c7.setContent(html_ce01a1777da8f4e18fdbcf847c5163c3);
+            
+        
+
+        marker_ca0822be57d39ee816ae845c08e5f340.bindPopup(popup_ded14a4163427a9531079f2cd1fec6c7)
+        ;
+
+        
+    
+    
+            var marker_c3fbd48710a2ff3d4de5acfe43f90c86 = L.marker(
+                [25.053779, 121.086524],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_f662c1c4fea3eb70073b569ae923c49e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_c3fbd48710a2ff3d4de5acfe43f90c86.setIcon(icon_f662c1c4fea3eb70073b569ae923c49e);
+        
+    
+        var popup_76211648e7c778698d2568034ebdfeab = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e428c36787eca16c35fb303fb04f5f84 = $(`<div id="html_e428c36787eca16c35fb303fb04f5f84" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 36<br>Count: 0</div>`)[0];
+                popup_76211648e7c778698d2568034ebdfeab.setContent(html_e428c36787eca16c35fb303fb04f5f84);
+            
+        
+
+        marker_c3fbd48710a2ff3d4de5acfe43f90c86.bindPopup(popup_76211648e7c778698d2568034ebdfeab)
+        ;
+
+        
+    
+    
+            var marker_1d3fb9b46fae70d57f43af80bb3e74e4 = L.marker(
+                [25.051099, 121.082825],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_239877062b731260e3d05a1cf4b66686 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_1d3fb9b46fae70d57f43af80bb3e74e4.setIcon(icon_239877062b731260e3d05a1cf4b66686);
+        
+    
+        var popup_fbe5255facba8dbd19cdd6a0369df88c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7dd11843647f239e6ac1da03b511be25 = $(`<div id="html_7dd11843647f239e6ac1da03b511be25" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 37<br>Count: 0</div>`)[0];
+                popup_fbe5255facba8dbd19cdd6a0369df88c.setContent(html_7dd11843647f239e6ac1da03b511be25);
+            
+        
+
+        marker_1d3fb9b46fae70d57f43af80bb3e74e4.bindPopup(popup_fbe5255facba8dbd19cdd6a0369df88c)
+        ;
+
+        
+    
+    
+            var marker_6e0e637e2683e1c1eb7b8637d7818bdd = L.marker(
+                [25.049386, 121.080078],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_65a709f6d5e072331abc4ea76cde869d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_6e0e637e2683e1c1eb7b8637d7818bdd.setIcon(icon_65a709f6d5e072331abc4ea76cde869d);
+        
+    
+        var popup_d5d652b7b8fe8aa2f4c47b8d4b8cea4c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_207d478bb1ac813b44987c08697d2097 = $(`<div id="html_207d478bb1ac813b44987c08697d2097" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 72<br>Count: 0</div>`)[0];
+                popup_d5d652b7b8fe8aa2f4c47b8d4b8cea4c.setContent(html_207d478bb1ac813b44987c08697d2097);
+            
+        
+
+        marker_6e0e637e2683e1c1eb7b8637d7818bdd.bindPopup(popup_d5d652b7b8fe8aa2f4c47b8d4b8cea4c)
+        ;
+
+        
+    
+    
+            var marker_977cc5ba6de9921e9586bd1340e323d5 = L.marker(
+                [25.047311, 121.077173],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_00669d4d1a4daedced571ff617b4d041 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_977cc5ba6de9921e9586bd1340e323d5.setIcon(icon_00669d4d1a4daedced571ff617b4d041);
+        
+    
+        var popup_629163b6177e9f9fb9e100e799cb5d23 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8500d4810d274ec2224585d56e236c40 = $(`<div id="html_8500d4810d274ec2224585d56e236c40" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 73<br>Count: 0</div>`)[0];
+                popup_629163b6177e9f9fb9e100e799cb5d23.setContent(html_8500d4810d274ec2224585d56e236c40);
+            
+        
+
+        marker_977cc5ba6de9921e9586bd1340e323d5.bindPopup(popup_629163b6177e9f9fb9e100e799cb5d23)
+        ;
+
+        
+    
+    
+            var marker_92ce1ea88be6b4c0488ad25d3f8a9181 = L.marker(
+                [25.043361, 121.06612],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_b05751d9abce585d3b246a2005a08472 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_92ce1ea88be6b4c0488ad25d3f8a9181.setIcon(icon_b05751d9abce585d3b246a2005a08472);
+        
+    
+        var popup_cdf78dd3b755964f5af1058e8a0af176 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fd27485fe8fe2e5186e1d0288085f495 = $(`<div id="html_fd27485fe8fe2e5186e1d0288085f495" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_cdf78dd3b755964f5af1058e8a0af176.setContent(html_fd27485fe8fe2e5186e1d0288085f495);
+            
+        
+
+        marker_92ce1ea88be6b4c0488ad25d3f8a9181.bindPopup(popup_cdf78dd3b755964f5af1058e8a0af176)
+        ;
+
+        
+    
+    
+            var marker_9023851654058cebede9d269ee8bb0d8 = L.marker(
+                [25.042342, 121.063176],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_abc32677f78af1e7f174987b6aa04e79 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_9023851654058cebede9d269ee8bb0d8.setIcon(icon_abc32677f78af1e7f174987b6aa04e79);
+        
+    
+        var popup_7207868ffa40cf488e544bd384296269 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4013d60361be7a6fce67b37514fc33d5 = $(`<div id="html_4013d60361be7a6fce67b37514fc33d5" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_7207868ffa40cf488e544bd384296269.setContent(html_4013d60361be7a6fce67b37514fc33d5);
+            
+        
+
+        marker_9023851654058cebede9d269ee8bb0d8.bindPopup(popup_7207868ffa40cf488e544bd384296269)
+        ;
+
+        
+    
+    
+            var marker_f3242ba29e234f65080403040e4ac650 = L.marker(
+                [25.040665, 121.058557],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_511519cb849ca445e2e617dbef78badc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_f3242ba29e234f65080403040e4ac650.setIcon(icon_511519cb849ca445e2e617dbef78badc);
+        
+    
+        var popup_114b97a4cda2756600e06b9da8dd7a87 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0082c7e2552f6893dc08c1824d3a6cee = $(`<div id="html_0082c7e2552f6893dc08c1824d3a6cee" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_114b97a4cda2756600e06b9da8dd7a87.setContent(html_0082c7e2552f6893dc08c1824d3a6cee);
+            
+        
+
+        marker_f3242ba29e234f65080403040e4ac650.bindPopup(popup_114b97a4cda2756600e06b9da8dd7a87)
+        ;
+
+        
+    
+    
+            var marker_ed4ecbeff7e3e67717a2fe11769f05e3 = L.marker(
+                [25.038752, 121.05592],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_fd615bfe0cc212b1c66a0c05022d09d3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_ed4ecbeff7e3e67717a2fe11769f05e3.setIcon(icon_fd615bfe0cc212b1c66a0c05022d09d3);
+        
+    
+        var popup_aa3ae6d1aaff95fb9c10996259e18bca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a4991076758472bec6d2fb58b5e8a020 = $(`<div id="html_a4991076758472bec6d2fb58b5e8a020" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_aa3ae6d1aaff95fb9c10996259e18bca.setContent(html_a4991076758472bec6d2fb58b5e8a020);
+            
+        
+
+        marker_ed4ecbeff7e3e67717a2fe11769f05e3.bindPopup(popup_aa3ae6d1aaff95fb9c10996259e18bca)
+        ;
+
+        
+    
+    
+            var marker_623e3f133d0640310efac66c000bd255 = L.marker(
+                [25.036749, 121.052847],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_dbf4fca685f160acd7d2f5ed8a9ea879 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_623e3f133d0640310efac66c000bd255.setIcon(icon_dbf4fca685f160acd7d2f5ed8a9ea879);
+        
+    
+        var popup_0b235ed1b1bc1a62cbfc23c55db1cc9b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b53f0850ed33f8fb408ef9689bf65ef4 = $(`<div id="html_b53f0850ed33f8fb408ef9689bf65ef4" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_0b235ed1b1bc1a62cbfc23c55db1cc9b.setContent(html_b53f0850ed33f8fb408ef9689bf65ef4);
+            
+        
+
+        marker_623e3f133d0640310efac66c000bd255.bindPopup(popup_0b235ed1b1bc1a62cbfc23c55db1cc9b)
+        ;
+
+        
+    
+    
+            var marker_e5d5be4526e5389f225615cbe967c535 = L.marker(
+                [25.031605, 121.046374],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_571c364c638c6e159ebc01ff2d5690c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_e5d5be4526e5389f225615cbe967c535.setIcon(icon_571c364c638c6e159ebc01ff2d5690c6);
+        
+    
+        var popup_2d20c72503548fc677fad62f61e9a574 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_760267e715a0d92cba2a0919bd917475 = $(`<div id="html_760267e715a0d92cba2a0919bd917475" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 30<br>Count: 0</div>`)[0];
+                popup_2d20c72503548fc677fad62f61e9a574.setContent(html_760267e715a0d92cba2a0919bd917475);
+            
+        
+
+        marker_e5d5be4526e5389f225615cbe967c535.bindPopup(popup_2d20c72503548fc677fad62f61e9a574)
+        ;
+
+        
+    
+    
+            var marker_52b2bcef3a9c330364d40a1766af6ef2 = L.marker(
+                [25.021752, 121.039039],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_6585e455c749f36dcb2dbd56cc993967 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_52b2bcef3a9c330364d40a1766af6ef2.setIcon(icon_6585e455c749f36dcb2dbd56cc993967);
+        
+    
+        var popup_787522ba0962cb740f304bf4a5bcd5a6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_687bbf28e66ca82ca54fbabf1f5057de = $(`<div id="html_687bbf28e66ca82ca54fbabf1f5057de" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_787522ba0962cb740f304bf4a5bcd5a6.setContent(html_687bbf28e66ca82ca54fbabf1f5057de);
+            
+        
+
+        marker_52b2bcef3a9c330364d40a1766af6ef2.bindPopup(popup_787522ba0962cb740f304bf4a5bcd5a6)
+        ;
+
+        
+    
+    
+            var marker_33dd37d13c912ac513a5ab2ff4cf0226 = L.marker(
+                [25.020511, 121.036382],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_f18f780b052ec91d2b3eb3b7724af4c0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_33dd37d13c912ac513a5ab2ff4cf0226.setIcon(icon_f18f780b052ec91d2b3eb3b7724af4c0);
+        
+    
+        var popup_730cb00cbb8cce2cb5b69a0d6892d427 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e5b0a934fdcff3cf13529cd5c45ad444 = $(`<div id="html_e5b0a934fdcff3cf13529cd5c45ad444" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 25<br>Count: 0</div>`)[0];
+                popup_730cb00cbb8cce2cb5b69a0d6892d427.setContent(html_e5b0a934fdcff3cf13529cd5c45ad444);
+            
+        
+
+        marker_33dd37d13c912ac513a5ab2ff4cf0226.bindPopup(popup_730cb00cbb8cce2cb5b69a0d6892d427)
+        ;
+
+        
+    
+    
+            var marker_5908f93e93003de177d8ff0d8a7bd97a = L.marker(
+                [24.93468, 120.982352],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_20f83e07bacfedfb7b8a78aef533c312 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_5908f93e93003de177d8ff0d8a7bd97a.setIcon(icon_20f83e07bacfedfb7b8a78aef533c312);
+        
+    
+        var popup_accc179560eb66de7b014c4e3c503bac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8e93e653b3a317b3236370a8b83a82bb = $(`<div id="html_8e93e653b3a317b3236370a8b83a82bb" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_accc179560eb66de7b014c4e3c503bac.setContent(html_8e93e653b3a317b3236370a8b83a82bb);
+            
+        
+
+        marker_5908f93e93003de177d8ff0d8a7bd97a.bindPopup(popup_accc179560eb66de7b014c4e3c503bac)
+        ;
+
+        
+    
+    
+            var marker_2bfdb553d370443edd99c40b2d404f28 = L.marker(
+                [24.709631, 120.863221],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_6e171aa18b40a65bead25d78f2bfcfda = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2bfdb553d370443edd99c40b2d404f28.setIcon(icon_6e171aa18b40a65bead25d78f2bfcfda);
+        
+    
+        var popup_ba9eaf5d1e63223f9f943674401fd294 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_34c103d1b2694472f73b5c1cc9369e59 = $(`<div id="html_34c103d1b2694472f73b5c1cc9369e59" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 8<br>Count: 0</div>`)[0];
+                popup_ba9eaf5d1e63223f9f943674401fd294.setContent(html_34c103d1b2694472f73b5c1cc9369e59);
+            
+        
+
+        marker_2bfdb553d370443edd99c40b2d404f28.bindPopup(popup_ba9eaf5d1e63223f9f943674401fd294)
+        ;
+
+        
+    
+    
+            var marker_cd3ecbcf0f6bb5f012f3df48541c7d8f = L.marker(
+                [24.705512, 120.86121],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_0dd0b213b03599e506f45cef66b5909a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_cd3ecbcf0f6bb5f012f3df48541c7d8f.setIcon(icon_0dd0b213b03599e506f45cef66b5909a);
+        
+    
+        var popup_7edfd3d2b5a3adeae6b411c54914a580 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a41a4dc8ed592318a772196034c73647 = $(`<div id="html_a41a4dc8ed592318a772196034c73647" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 9<br>Count: 20</div>`)[0];
+                popup_7edfd3d2b5a3adeae6b411c54914a580.setContent(html_a41a4dc8ed592318a772196034c73647);
+            
+        
+
+        marker_cd3ecbcf0f6bb5f012f3df48541c7d8f.bindPopup(popup_7edfd3d2b5a3adeae6b411c54914a580)
+        ;
+
+        
+    
+    
+            var marker_07b93105d76606a58e3f1a42f4d6bebe = L.marker(
+                [24.667418, 120.817],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_406808ae31e036d774f0ead08326f8c2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_07b93105d76606a58e3f1a42f4d6bebe.setIcon(icon_406808ae31e036d774f0ead08326f8c2);
+        
+    
+        var popup_c764be4565f62eb28842e4be8027915c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8cb7308d9dd1ab9b8b2e1463f12f6ee3 = $(`<div id="html_8cb7308d9dd1ab9b8b2e1463f12f6ee3" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_c764be4565f62eb28842e4be8027915c.setContent(html_8cb7308d9dd1ab9b8b2e1463f12f6ee3);
+            
+        
+
+        marker_07b93105d76606a58e3f1a42f4d6bebe.bindPopup(popup_c764be4565f62eb28842e4be8027915c)
+        ;
+
+        
+    
+    
+            var marker_1af9256481d4ee5b3f853b75af865800 = L.marker(
+                [24.591349, 120.725205],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_5c5e75eaaaadbbda3a7a4f50db361b1b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_1af9256481d4ee5b3f853b75af865800.setIcon(icon_5c5e75eaaaadbbda3a7a4f50db361b1b);
+        
+    
+        var popup_77347c6ad68e51a0a0257692b08488e6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ce7bc6960bd8ebde18ff5e065ef2d4e = $(`<div id="html_6ce7bc6960bd8ebde18ff5e065ef2d4e" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_77347c6ad68e51a0a0257692b08488e6.setContent(html_6ce7bc6960bd8ebde18ff5e065ef2d4e);
+            
+        
+
+        marker_1af9256481d4ee5b3f853b75af865800.bindPopup(popup_77347c6ad68e51a0a0257692b08488e6)
+        ;
+
+        
+    
+    
+            var marker_5d4eb2165c2b4a2eafcfaa3a3a77c7c5 = L.marker(
+                [24.57410325606123, 120.70908162111162],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_f3d5ad8e56926ca3d9b145f81e2f8b3d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_5d4eb2165c2b4a2eafcfaa3a3a77c7c5.setIcon(icon_f3d5ad8e56926ca3d9b145f81e2f8b3d);
+        
+    
+        var popup_b989f9ad5d1e1fa71a6965aa6754f3d2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ddc78fa00e54fd7f82a14dce0b86f8cb = $(`<div id="html_ddc78fa00e54fd7f82a14dce0b86f8cb" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 18<br>Count: 21</div>`)[0];
+                popup_b989f9ad5d1e1fa71a6965aa6754f3d2.setContent(html_ddc78fa00e54fd7f82a14dce0b86f8cb);
+            
+        
+
+        marker_5d4eb2165c2b4a2eafcfaa3a3a77c7c5.bindPopup(popup_b989f9ad5d1e1fa71a6965aa6754f3d2)
+        ;
+
+        
+    
+    
+            var marker_d27c5654093b8f60af48694bba843dbf = L.marker(
+                [24.43690343, 120.6218744],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_6666274335ed7f77707bed61ed44dae5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d27c5654093b8f60af48694bba843dbf.setIcon(icon_6666274335ed7f77707bed61ed44dae5);
+        
+    
+        var popup_4069b9056357817ec43890a08d27f5fe = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fd45c4b24a471f86d30ebe347626115a = $(`<div id="html_fd45c4b24a471f86d30ebe347626115a" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 20</div>`)[0];
+                popup_4069b9056357817ec43890a08d27f5fe.setContent(html_fd45c4b24a471f86d30ebe347626115a);
+            
+        
+
+        marker_d27c5654093b8f60af48694bba843dbf.bindPopup(popup_4069b9056357817ec43890a08d27f5fe)
+        ;
+
+        
+    
+    
+            var marker_70953582a805b008998b19740498c84d = L.marker(
+                [24.42229973, 120.6132893],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_56204b2afda09e07b5e6799158eddb12 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_70953582a805b008998b19740498c84d.setIcon(icon_56204b2afda09e07b5e6799158eddb12);
+        
+    
+        var popup_622b7320c04ff3fefa0f7383c47035a4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ff75217ec534939eb34befa208ccc88 = $(`<div id="html_9ff75217ec534939eb34befa208ccc88" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 24<br>Count: 20</div>`)[0];
+                popup_622b7320c04ff3fefa0f7383c47035a4.setContent(html_9ff75217ec534939eb34befa208ccc88);
+            
+        
+
+        marker_70953582a805b008998b19740498c84d.bindPopup(popup_622b7320c04ff3fefa0f7383c47035a4)
+        ;
+
+        
+    
+    
+            var marker_1b38a600aaafeeeada68546d834cf2b7 = L.marker(
+                [24.41751835, 120.6078507],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_4557d7d5abee9c8842fbfb14e02583ae = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1b38a600aaafeeeada68546d834cf2b7.setIcon(icon_4557d7d5abee9c8842fbfb14e02583ae);
+        
+    
+        var popup_d53b80b6d1aeb6943ddd3cf42a10f4b6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_66554f709ab36e30a966e88fc18f4890 = $(`<div id="html_66554f709ab36e30a966e88fc18f4890" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 20</div>`)[0];
+                popup_d53b80b6d1aeb6943ddd3cf42a10f4b6.setContent(html_66554f709ab36e30a966e88fc18f4890);
+            
+        
+
+        marker_1b38a600aaafeeeada68546d834cf2b7.bindPopup(popup_d53b80b6d1aeb6943ddd3cf42a10f4b6)
+        ;
+
+        
+    
+    
+            var marker_3e2d28fedea86081e60f439becb4b7b3 = L.marker(
+                [24.41170149, 120.6035794],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_13d353b3f989e933618cde02eea5b160 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_3e2d28fedea86081e60f439becb4b7b3.setIcon(icon_13d353b3f989e933618cde02eea5b160);
+        
+    
+        var popup_d7e6857a9b5b7336b3fcc2f66148c9e5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fc1c11acbaea0096ddf2fb879a13c004 = $(`<div id="html_fc1c11acbaea0096ddf2fb879a13c004" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 25<br>Count: 0</div>`)[0];
+                popup_d7e6857a9b5b7336b3fcc2f66148c9e5.setContent(html_fc1c11acbaea0096ddf2fb879a13c004);
+            
+        
+
+        marker_3e2d28fedea86081e60f439becb4b7b3.bindPopup(popup_d7e6857a9b5b7336b3fcc2f66148c9e5)
+        ;
+
+        
+    
+    
+            var marker_edb37df0968e6beea13bb9b0b5acddc8 = L.marker(
+                [24.398728, 120.597142],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_a00a4bc6229703dbdbdb20b1ca76bf18 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_edb37df0968e6beea13bb9b0b5acddc8.setIcon(icon_a00a4bc6229703dbdbdb20b1ca76bf18);
+        
+    
+        var popup_37a9b4e9bbbff3525595593a95b0ac11 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6200c6bdbd7740b678e408558977cee5 = $(`<div id="html_6200c6bdbd7740b678e408558977cee5" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 34<br>Count: 0</div>`)[0];
+                popup_37a9b4e9bbbff3525595593a95b0ac11.setContent(html_6200c6bdbd7740b678e408558977cee5);
+            
+        
+
+        marker_edb37df0968e6beea13bb9b0b5acddc8.bindPopup(popup_37a9b4e9bbbff3525595593a95b0ac11)
+        ;
+
+        
+    
+    
+            var marker_76561fc47688ce6f8a324d31be44b58a = L.marker(
+                [24.39813414, 120.5946397],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_4b091d067092a224d7372757a4bd2e73 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_76561fc47688ce6f8a324d31be44b58a.setIcon(icon_4b091d067092a224d7372757a4bd2e73);
+        
+    
+        var popup_afba87812cef5180feced9057b1fa163 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a81bca3a7d89fcfc8598e7a137043602 = $(`<div id="html_a81bca3a7d89fcfc8598e7a137043602" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 9<br>Count: 0</div>`)[0];
+                popup_afba87812cef5180feced9057b1fa163.setContent(html_a81bca3a7d89fcfc8598e7a137043602);
+            
+        
+
+        marker_76561fc47688ce6f8a324d31be44b58a.bindPopup(popup_afba87812cef5180feced9057b1fa163)
+        ;
+
+        
+    
+    
+            var marker_78892ed53d791e4b25e58b8d04ecd731 = L.marker(
+                [24.3926283, 120.588663],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_b04a13b329e7508f1fd7fcb4b16ecde7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_78892ed53d791e4b25e58b8d04ecd731.setIcon(icon_b04a13b329e7508f1fd7fcb4b16ecde7);
+        
+    
+        var popup_0b2512a9e7aab15ad0c3f165c5cc4962 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0fce6343e06a230a3ff2971635ae44e9 = $(`<div id="html_0fce6343e06a230a3ff2971635ae44e9" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 27<br>Count: 0</div>`)[0];
+                popup_0b2512a9e7aab15ad0c3f165c5cc4962.setContent(html_0fce6343e06a230a3ff2971635ae44e9);
+            
+        
+
+        marker_78892ed53d791e4b25e58b8d04ecd731.bindPopup(popup_0b2512a9e7aab15ad0c3f165c5cc4962)
+        ;
+
+        
+    
+    
+            var marker_9b73dd0faa5cb8ee02e645be8352925d = L.marker(
+                [24.37088052, 120.583292],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_f488c937728a48b517f533878fbc0ff1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_9b73dd0faa5cb8ee02e645be8352925d.setIcon(icon_f488c937728a48b517f533878fbc0ff1);
+        
+    
+        var popup_7d17d0b8995c1601e4d74f17f53b695f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ac3c13dc8ee1d8859155507a593de5e2 = $(`<div id="html_ac3c13dc8ee1d8859155507a593de5e2" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 15<br>Count: 9</div>`)[0];
+                popup_7d17d0b8995c1601e4d74f17f53b695f.setContent(html_ac3c13dc8ee1d8859155507a593de5e2);
+            
+        
+
+        marker_9b73dd0faa5cb8ee02e645be8352925d.bindPopup(popup_7d17d0b8995c1601e4d74f17f53b695f)
+        ;
+
+        
+    
+    
+            var marker_7e40d6d0c8646b26659a611b3402fe35 = L.marker(
+                [24.36425116, 120.5793118],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_3db1105b0a9affe2a3d38c06bf45a556 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7e40d6d0c8646b26659a611b3402fe35.setIcon(icon_3db1105b0a9affe2a3d38c06bf45a556);
+        
+    
+        var popup_5f02a268810643020f3e00fcd66cae8d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_32b721243c717265b84deceb32bcb8d3 = $(`<div id="html_32b721243c717265b84deceb32bcb8d3" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 16<br>Count: 10</div>`)[0];
+                popup_5f02a268810643020f3e00fcd66cae8d.setContent(html_32b721243c717265b84deceb32bcb8d3);
+            
+        
+
+        marker_7e40d6d0c8646b26659a611b3402fe35.bindPopup(popup_5f02a268810643020f3e00fcd66cae8d)
+        ;
+
+        
+    
+    
+            var marker_53a5d1948f297b3de71ef6b640b83028 = L.marker(
+                [24.35598741, 120.5730844],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_eb5f58245bb685c5a53c887a2070ee8b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_53a5d1948f297b3de71ef6b640b83028.setIcon(icon_eb5f58245bb685c5a53c887a2070ee8b);
+        
+    
+        var popup_e9f1f1d7ce8984f564e256a25da482f6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_333e1f22e3ea80dfd870c3e5476c671a = $(`<div id="html_333e1f22e3ea80dfd870c3e5476c671a" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 17<br>Count: 10</div>`)[0];
+                popup_e9f1f1d7ce8984f564e256a25da482f6.setContent(html_333e1f22e3ea80dfd870c3e5476c671a);
+            
+        
+
+        marker_53a5d1948f297b3de71ef6b640b83028.bindPopup(popup_e9f1f1d7ce8984f564e256a25da482f6)
+        ;
+
+        
+    
+    
+            var marker_ee04ffafbecbee55be7eda5b975704f6 = L.marker(
+                [24.353799, 120.570811],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_56842494287c1bfa4356461f34a47972 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ee04ffafbecbee55be7eda5b975704f6.setIcon(icon_56842494287c1bfa4356461f34a47972);
+        
+    
+        var popup_ffaa4469ee799a050963600e95f6ee30 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2e23e50deff844b451805408049eefac = $(`<div id="html_2e23e50deff844b451805408049eefac" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 18<br>Count: 10</div>`)[0];
+                popup_ffaa4469ee799a050963600e95f6ee30.setContent(html_2e23e50deff844b451805408049eefac);
+            
+        
+
+        marker_ee04ffafbecbee55be7eda5b975704f6.bindPopup(popup_ffaa4469ee799a050963600e95f6ee30)
+        ;
+
+        
+    
+    
+            var marker_24989db41e3c483b28cee0b779a4a7c4 = L.marker(
+                [24.3225345, 120.4408062],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_dbbae375dda5fae2363f3c8d9df6266c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_24989db41e3c483b28cee0b779a4a7c4.setIcon(icon_dbbae375dda5fae2363f3c8d9df6266c);
+        
+    
+        var popup_9e246a4ea7dfb59c99d37677d8626261 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_215dedd3530a3e24d4b662c178e14c59 = $(`<div id="html_215dedd3530a3e24d4b662c178e14c59" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 4<br>Count: 20</div>`)[0];
+                popup_9e246a4ea7dfb59c99d37677d8626261.setContent(html_215dedd3530a3e24d4b662c178e14c59);
+            
+        
+
+        marker_24989db41e3c483b28cee0b779a4a7c4.bindPopup(popup_9e246a4ea7dfb59c99d37677d8626261)
+        ;
+
+        
+    
+    
+            var marker_ce7f76f47c8e2e7a670fff42025f9701 = L.marker(
+                [24.3325345, 120.4408062],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_460a163f6a9d5906fbc4eff7338f57ea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ce7f76f47c8e2e7a670fff42025f9701.setIcon(icon_460a163f6a9d5906fbc4eff7338f57ea);
+        
+    
+        var popup_95eb9532433e039aaadb2fb0d53ad273 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6fcccff756f33b6c5bd39a2134a57abe = $(`<div id="html_6fcccff756f33b6c5bd39a2134a57abe" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 08-01<br>Count: 20</div>`)[0];
+                popup_95eb9532433e039aaadb2fb0d53ad273.setContent(html_6fcccff756f33b6c5bd39a2134a57abe);
+            
+        
+
+        marker_ce7f76f47c8e2e7a670fff42025f9701.bindPopup(popup_95eb9532433e039aaadb2fb0d53ad273)
+        ;
+
+        
+    
+    
+            var marker_b2e61d8a07c5a00a6d0c0dfdcbc543ee = L.marker(
+                [24.3425345, 120.4408062],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_7ba972dba860466a34b062054b53bae2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b2e61d8a07c5a00a6d0c0dfdcbc543ee.setIcon(icon_7ba972dba860466a34b062054b53bae2);
+        
+    
+        var popup_090fdfaa62a3decf6acd47bbe7d2e804 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_491e3a9354f5f5298d849d1d85f00d16 = $(`<div id="html_491e3a9354f5f5298d849d1d85f00d16" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 22a<br>Count: 20</div>`)[0];
+                popup_090fdfaa62a3decf6acd47bbe7d2e804.setContent(html_491e3a9354f5f5298d849d1d85f00d16);
+            
+        
+
+        marker_b2e61d8a07c5a00a6d0c0dfdcbc543ee.bindPopup(popup_090fdfaa62a3decf6acd47bbe7d2e804)
+        ;
+
+        
+    
+    
+            var marker_ffb6e9f90bb905012f4043e22c6db06a = L.marker(
+                [23.985172, 120.329242],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_10465c0bffe83be246562016eb2827c1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ffb6e9f90bb905012f4043e22c6db06a.setIcon(icon_10465c0bffe83be246562016eb2827c1);
+        
+    
+        var popup_d081ede3ad01610de6de67f333fcca70 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_31c9e278b5893c004a471a8000e70e14 = $(`<div id="html_31c9e278b5893c004a471a8000e70e14" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 王功08<br>Count: 10</div>`)[0];
+                popup_d081ede3ad01610de6de67f333fcca70.setContent(html_31c9e278b5893c004a471a8000e70e14);
+            
+        
+
+        marker_ffb6e9f90bb905012f4043e22c6db06a.bindPopup(popup_d081ede3ad01610de6de67f333fcca70)
+        ;
+
+        
+    
+    
+            var marker_295f7f8991fc1bc279a4580e05ce68bd = L.marker(
+                [23.98097483, 120.3276329],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_f8c4e78fe86ddee6f51cc34a936c8865 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_295f7f8991fc1bc279a4580e05ce68bd.setIcon(icon_f8c4e78fe86ddee6f51cc34a936c8865);
+        
+    
+        var popup_045f5c1fad487ae14df9967c754a1cef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c1f61e7e35a78509f8ad61e7d0534634 = $(`<div id="html_c1f61e7e35a78509f8ad61e7d0534634" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: 王功09<br>Count: 10</div>`)[0];
+                popup_045f5c1fad487ae14df9967c754a1cef.setContent(html_c1f61e7e35a78509f8ad61e7d0534634);
+            
+        
+
+        marker_295f7f8991fc1bc279a4580e05ce68bd.bindPopup(popup_045f5c1fad487ae14df9967c754a1cef)
+        ;
+
+        
+    
+    
+            var marker_dc4b7116e0d16d165048ee099aa3dc42 = L.marker(
+                [23.589572, 119.675862],
+                {}
+            ).addTo(map_6eb6cd7cfda04a506fff65342f88f29e);
+        
+    
+            var icon_0c5f9410c1f6c8803c89b6ab76adccd7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_dc4b7116e0d16d165048ee099aa3dc42.setIcon(icon_0c5f9410c1f6c8803c89b6ab76adccd7);
+        
+    
+        var popup_04de97255215223541336addd27ad72e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_66cd96231d5ec821c2c705911520f400 = $(`<div id="html_66cd96231d5ec821c2c705911520f400" style="width: 100.0%; height: 100.0%;">Wind Turbine ID: <br>Count: 0</div>`)[0];
+                popup_04de97255215223541336addd27ad72e.setContent(html_66cd96231d5ec821c2c705911520f400);
+            
+        
+
+        marker_dc4b7116e0d16d165048ee099aa3dc42.bindPopup(popup_04de97255215223541336addd27ad72e)
+        ;
+
+        
+    
+</script>
+</html>
